@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 Quiz</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+
+<body>
+    <!-- opening -->
+    <section id="landing-pg" class="centre-section">
+        <h1 class="title">Hello [blah]!</h1>
+        <button id="btn-1" class="button">click here</button>
+    </section>
+
+    <!-- START QUIZ BUTTON -->
+    <section id="intro" class="centre-section hide">
+        <h1>How well do you know me?</h1>
+        <p>If you get 8 or LESS out of 10, then you owe me food!!</p>
+        <button id="btn-2">click again</button>
+    </section>
+
+    <section id="confirm" class="centre-section hide">
+        <p>Are you ready? </p>
+        <button id="btn-3">Yes</button>
+    </section>
+
+    <!-- THE QUIZ -->
+    <section id="quiz-q" class="quiz-q hide">
+    <!-- title -->
+    <h1 id="q-title"></h1>
+    <!-- choices -->
+    <ul id="q-text">
+      <button><li class="q-choice"> </li></button>
+      <button><li class="q-choice"> </li></button>
+      <button><li class="q-choice"> </li></button>
+      <button><li class="q-choice"> </li></button>
+    </ul>
+    </section>
+    
+    <!-- TIMER -->
+    <!-- end game HIGHSCORE -->
+    <section id="scoreboard" class="hide">
+        <h1>Gameover!</h1>    
+        <h4>Your score is <span id="result-span"> </span></h4> 
+        <!-- form to enter initials  & button to save -->
+        <form  id="form-initials">
+            <input name="initial-input" type="text" placeholder="your initials here" id="initial-input" >
+            <button id="save-button" type="submit">Save</button>
+            <button id="restart-button" class="restart-button"> Restart </button> 
+        </form>
+    </section>
+
+    <!-- all high scores page -->
+<script src="./script.js"></script>
+</body>
+</html>

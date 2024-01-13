@@ -7,7 +7,7 @@ const btnTwo = document.getElementById('btn-2');
 const ready = document.getElementById('confirm');
 const btnThree = document.getElementById('btn-3');
 
-const quizQuestions = document.getElementById('quiz-q');
+const quizSection = document.getElementById('quiz-q');
 
 const quizTitle = document.getElementById('q-title');
 const quizChoice = document.getElementById('q-text');
@@ -119,7 +119,7 @@ btnTwo.addEventListener('click', function(){
 
 btnThree.addEventListener('click', function(){
     ready.classList.add('hide');
-    quizQuestions.classList.remove('hide');
+    quizSection.classList.remove('hide');
     displayQuestions(0);
 });
 
@@ -141,6 +141,7 @@ function displayQuestions(questionIndex){
             const button = document.createElement('button');
     
             button.setAttribute('class', 'centred btn-q');
+            li.setAttribute('class', 'centred text-dec');
     
             button.textContent = choices.text;
     
@@ -162,25 +163,22 @@ function displayQuestions(questionIndex){
       
 }
 
-// function tryAgain(){
-//     quizQuestions.classList.add('hide');
-//     const div = document.createElement('div');
-//     div.classList.add('try-again-div');
+function tryAgain(){ 
     
-//     const h1 = document.createElement('h1');
-//     const retryButton = document.createElement('button');
+    const h1 = document.createElement('h1');
+    const retryButton = document.createElement('button');
     
-//     h1.textContent = 'YOU LOSE'
-//     retryButton.textContent = 'Retry'
-    
-//     retryButton.addEventListener('click', function(){
-        
-//         const ready = getElementById('confirm');
-//         div.classList.add('hide');
-//         ready.classList.remove('hide');
+    h1.textContent = 'YOU LOSE'
+    retryButton.textContent = 'Retry'
 
-//     })
-    
-//     div.appendChild(h1, retryButton);
+    retryButton.addEventListener('click', function(){
+      quizSection.classList.add('hide');
+      ready.classList.remove('hide');
+    });
 
-// }
+    quizTitle.innerHTML = "";
+    quizChoice.innerHTML = "";
+
+    quizTitle.appendChild(h1);
+    quizChoice.appendChild(retryButton);
+}

@@ -12,95 +12,104 @@ const quizSection = document.getElementById('quiz-q');
 const quizTitle = document.getElementById('q-title');
 const quizChoice = document.getElementById('q-text');
 
+const youLose = document.getElementById('you-lose');
+
+const scoreboard = document.getElementById('scoreboard');
+const showResult = document.getElementById('result-span');
+
+const losses = document.getElementById('losses');
+const lossSpan = document.getElementById('loss-span');
+const count = 0;
+
 const question = [
     {
         title: "My favourite food",
         answers: [
           { text: "Curried beans", correct: false },
           { text: "Lamb saganaki", correct: false },
-          { text: "Coconut curry", correct: true},
+          { text: "Coconut curry", correct: true },
           { text: "Burrito bowl", correct: false }
         ]
       },
       {
-          title: "My favourite food",
+          title: "What console is my ideal?",
             answers: [
-              { text: "Curried beans", correct: false },
-              { text: "Lamb saganaki", correct: false },
-              { text: "Coconut curry", correct: false},
-              { text: "Burrito bowl", correct: false }
+              { text: "Gameboy colour", correct: false },
+              { text: "Playstation", correct: true },
+              { text: "Xbox", correct: false },
+              { text: "Nintendo switch", correct: false }
             ]
       },
       {
-        title: "My favourite food",
+        title: "What is my favourite niche interest?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Bouldering", correct: true },
+            { text: "Binge shows", correct: false },
+            { text: "Beatbox", correct: false },
+            { text: "Chess", correct: true }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What was the year I was born?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "1998", correct: false },
+            { text: "2000", correct: false },
+            { text: "2001", correct: false },
+            { text: "2002", correct: true }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What is my favourite Cartoon Network show? ",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Regular Show", correct: false },
+            { text: "Adventure Time", correct: true },
+            { text: "Amazing World Of Gumball", correct: false },
+            { text: "Steven Universe", correct: false }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What is my current job?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Mechanic", correct: false },
+            { text: "Customer service", correct: false },
+            { text: "Events", correct: true },
+            { text: "Web developer", correct: false }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What is my Mums name?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Gloria", correct: false },
+            { text: "Martina", correct: false },
+            { text: "Celina", correct: false},
+            { text: "Rhea", correct: true }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What is the best live performance I've seen?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Shock One", correct: false },
+            { text: "Grand Beatbox Battle 2023", correct: false },
+            { text: "Golden Features (Xmas eve)", correct: false },
+            { text: "Tyler the Creator", correct: true }
           ]
     },
     {
-        title: "My favourite food",
+        title: "How many times have I left W.A?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "2", correct: true },
+            { text: "4", correct: false },
+            { text: "3", correct: false },
+            { text: "1", correct: false }
           ]
     },
     {
-        title: "My favourite food",
+        title: "What was the first answer to this quiz?",
           answers: [
-            { text: "Curried beans", correct: false },
-            { text: "Lamb saganaki", correct: false },
-            { text: "Coconut curry", correct: false},
-            { text: "Burrito bowl", correct: false }
+            { text: "Bouldering", correct: false },
+            { text: "Adventure Time", correct: false },
+            { text: "Playstation", correct: false },
+            { text: "Coconut Curry", correct: true }
           ]
     },
 
@@ -120,12 +129,15 @@ btnTwo.addEventListener('click', function(){
 btnThree.addEventListener('click', function(){
     ready.classList.add('hide');
     quizSection.classList.remove('hide');
+    quizTitle.classList.remove('hide');
+    quizChoice.classList.remove('hide');
+    youLose.innerHTML = "";
     displayQuestions(0);
 });
 
 function displayQuestions(questionIndex){
 
-    const questions = question[questionIndex]
+    const questions = question[questionIndex];
 
     quizTitle.textContent = questions.title;
 
@@ -150,21 +162,19 @@ function displayQuestions(questionIndex){
             quizChoice.appendChild(li);
 
         button.addEventListener('click', function(){
-
-            if (choices.correct === false) {
-                return tryAgain();
-            }else {
-                return renderNextQuestion();
-            }
-        })
-           
-    }
-                
-      
+          if (choices.correct === false) {
+            setLossCounter();
+            return tryAgain();
+          }else {
+            return returnNextQuestion(questionIndex);
+          }
+        })      
+     } 
 }
 
 function tryAgain(){ 
-    
+    losses.classList.remove('hide');
+
     const h1 = document.createElement('h1');
     const retryButton = document.createElement('button');
     
@@ -173,12 +183,35 @@ function tryAgain(){
 
     retryButton.addEventListener('click', function(){
       quizSection.classList.add('hide');
+      losses.classList.add('hide');
       ready.classList.remove('hide');
     });
 
-    quizTitle.innerHTML = "";
-    quizChoice.innerHTML = "";
+    quizTitle.classList.add('hide');
+    quizChoice.classList.add('hide');
 
-    quizTitle.appendChild(h1);
-    quizChoice.appendChild(retryButton);
+    youLose.appendChild(h1).innerHTML;
+    youLose.appendChild(retryButton).innerHTML;
+}
+
+function returnNextQuestion(questionIndex){
+
+  const nextQuestionIndex = questionIndex + 1 ; 
+
+  if (nextQuestionIndex >= question.length){
+  //show end game screen
+  return endGame();
+  }
+  displayQuestions(nextQuestionIndex);
+
+}
+
+function setLossCounter(){
+  lossSpan.textContent = count;
+}
+
+function endGame(){
+  quizSection.classList.add('hide'); 
+  scoreboard.classList.remove('hide');
+
 }

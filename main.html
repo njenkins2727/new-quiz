@@ -12,26 +12,26 @@
 <body>
     <!-- opening -->
     <section id="landing-pg" class="centre-section">
-        <h1 class="title">Hello [blah]!</h1>
+        <h1 class="title">Hello 👋</h1>
         <button id="btn-1" class="button">click here</button>
     </section>
 
     <!-- START QUIZ BUTTON -->
     <section id="intro" class="centre-section hide">
-        <h1>How well do you know me?</h1>
-        <p>If you get 8 or LESS out of 10, then you owe me food!!</p>
+        <h1>How well do you know me?🧠</h1>
+        <p>If you LOSE, then you owe me FOOD!</p>
         <button id="btn-2">click again</button>
     </section>
 
     <section id="confirm" class="centre-section hide">
-        <p>Are you ready? </p>
+        <p>Are you ready❓</p>
         <button id="btn-3">Yes</button>
     </section>
 
     <!-- THE QUIZ -->
     <section id="quiz-q" class="quiz-q centre-section hide">
     <!-- title -->
-    <h1 id="q-title"></h1>
+    <h1 id="q-title"></h1> 
     <!-- choices -->
     <ul id="q-text">
       <button><li class="q-choice"> </li></button>
@@ -39,21 +39,25 @@
       <button><li class="q-choice"> </li></button>
       <button><li class="q-choice"> </li></button>
     </ul>
-    </section>
+    <p id="losses" class="hide">Losses:<span id="loss-span"> </span></p>
+    <div id="you-lose"></div>
+</section>
     
     <!-- TIMER -->
     <!-- end game HIGHSCORE -->
-    <section id="scoreboard" class="hide">
-        <h1>Gameover!</h1>    
-        <h4>Your score is <span id="result-span"> </span></h4> 
+    <section id="scoreboard" class="centre-section hide">
+        <h1>Gameover❗️</h1>    
+        <h4>Your owe me food <span id="result-span"> </span> times😈</h4> 
         <!-- form to enter initials  & button to save -->
-        <form  id="form-initials">
-            <input name="initial-input" type="text" placeholder="your initials here" id="initial-input" >
-            <button id="save-button" type="submit">Save</button>
-            <button id="restart-button" class="restart-button"> Restart </button> 
-        </form>
     </section>
+    
 
+    <section id="play-again" class="centre-section hide">
+        <h1> Play Again?🥺</h1>
+        <button id="btn-3">Yes</button>
+        <button id="btnn-no">No</button>
+    </section>
+    
     <!-- all high scores page -->
 <script src="./script.js"></script>
 </body>

@@ -7,6 +7,9 @@ const btnTwo = document.getElementById('btn-2');
 const ready = document.getElementById('confirm');
 const btnThree = document.getElementById('btn-3');
 
+const btnFour = document.getElementById('btn-4')
+const btnFive= document.getElementById('btn-5')
+
 const quizSection = document.getElementById('quiz-q');
 
 const quizTitle = document.getElementById('q-title');
@@ -18,12 +21,16 @@ const scoreboard = document.getElementById('scoreboard');
 const showResult = document.getElementById('result-span');
 
 const losses = document.getElementById('losses');
-const lossSpan = document.getElementById('loss-span');
-const count = 0;
+let lossSpan = document.getElementById('loss-span');
+let count = 0;
+
+const playAgain = document.getElementById('play-again');
+
+const gameOverStatement = document.getElementById('owe-statement')
 
 const question = [
     {
-        title: "My favourite food",
+        title: "What is my favourite food?",
         answers: [
           { text: "Curried beans", correct: false },
           { text: "Lamb saganaki", correct: false },
@@ -45,8 +52,8 @@ const question = [
           answers: [
             { text: "Bouldering", correct: true },
             { text: "Binge shows", correct: false },
-            { text: "Beatbox", correct: false },
-            { text: "Chess", correct: true }
+            { text: "Beatbox", correct: true },
+            { text: "Chess", correct: false }
           ]
     },
     {
@@ -72,17 +79,17 @@ const question = [
           answers: [
             { text: "Mechanic", correct: false },
             { text: "Customer service", correct: false },
-            { text: "Events", correct: true },
+            { text: "Event staff", correct: true },
             { text: "Web developer", correct: false }
           ]
     },
     {
-        title: "What is my Mums name?",
+        title: "What is my Lolas name?",
           answers: [
-            { text: "Gloria", correct: false },
-            { text: "Martina", correct: false },
-            { text: "Celina", correct: false},
-            { text: "Rhea", correct: true }
+            { text: "Violin", correct: false },
+            { text: "Violet", correct: false },
+            { text: "Vicki", correct: false},
+            { text: "Viole", correct: true }
           ]
     },
     {
@@ -122,12 +129,14 @@ btnOne.addEventListener('click', function(){
 })
 
 btnTwo.addEventListener('click', function(){
+  playAgain.classList.add('hide');
     intro.classList.add('hide');
     ready.classList.remove('hide');
 })
 
 btnThree.addEventListener('click', function(){
     ready.classList.add('hide');
+
     quizSection.classList.remove('hide');
     quizTitle.classList.remove('hide');
     quizChoice.classList.remove('hide');
@@ -152,7 +161,7 @@ function displayQuestions(questionIndex){
 
             const button = document.createElement('button');
     
-            button.setAttribute('class', 'centred btn-q');
+            button.setAttribute('class', ' btn-q');
             li.setAttribute('class', 'centred text-dec');
     
             button.textContent = choices.text;
@@ -163,6 +172,7 @@ function displayQuestions(questionIndex){
 
         button.addEventListener('click', function(){
           if (choices.correct === false) {
+            count++;
             setLossCounter();
             return tryAgain();
           }else {
@@ -214,4 +224,23 @@ function endGame(){
   quizSection.classList.add('hide'); 
   scoreboard.classList.remove('hide');
 
+  if(count === 1){
+   times = 'time'
+  }else {
+    times = 'times'
+  }
+
+gameOverStatement.textContent = 'You owe me food' + ' ' + count + ' ' + times
+
+btnFour.addEventListener('click', function(){
+  scoreboard.classList.add('hide');
+  playAgain.classList.remove('hide');
+})
 }
+
+
+btnFive.addEventListener('click', function(){
+  playAgain.classList.add('hide');
+  ready.classList.remove('hide');
+})
+
